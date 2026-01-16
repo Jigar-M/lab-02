@@ -2,6 +2,7 @@ package com.example.listycity;
 
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     ListView cityList;
     ArrayAdapter<String> cityAdapter;
     ArrayList<String> dataList;
+    Button addButton, removeButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,14 +32,19 @@ public class MainActivity extends AppCompatActivity {
         });
 
         cityList = findViewById(R.id.city_list);
+        addButton = findViewById(R.id.add_button);
+        removeButton = findViewById(R.id.delete_button);
 
-        String []cities = {"Edmonton", "Vancouver", "Moscow", "Sydney", "Berlin", "Vienna", "Tokyo", "Beijing", "Osaka", "New Delhi"};
+        String []cities = {"Edmonton", "Vancouver", "Moscow", "Sydney", "Berlin",
+                "Vienna", "Tokyo", "Beijing", "Osaka", "New Delhi"};
 
         dataList = new ArrayList<>();
         dataList.addAll(Arrays.asList(cities));
 
         cityAdapter = new ArrayAdapter<>(this,  R.layout.content, dataList);
         cityList.setAdapter(cityAdapter);
+
+
 
     }
 }
