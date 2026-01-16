@@ -1,8 +1,10 @@
 package com.example.listycity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
@@ -15,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
+    EditText inputText;
     ListView cityList;
     ArrayAdapter<String> cityAdapter;
     ArrayList<String> dataList;
@@ -31,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        inputText = findViewById(R.id.inputText);
         cityList = findViewById(R.id.city_list);
         addButton = findViewById(R.id.add_button);
         removeButton = findViewById(R.id.delete_button);
@@ -44,7 +48,17 @@ public class MainActivity extends AppCompatActivity {
         cityAdapter = new ArrayAdapter<>(this,  R.layout.content, dataList);
         cityList.setAdapter(cityAdapter);
 
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            dataList.add(inputText.getText().toString());  }
+        });
 
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dataList.remove(inputText.getText().toString());  }
+        });
 
     }
 }
